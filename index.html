@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NANOFINS — About</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #07111f;
+    --deep: #0a1828;
+    --mid: #112240;
+    --gold: #c8a84b;
+    --gold2: #e8c96a;
+    --cream: #f0ead8;
+    --fog: #8fa4bc;
+    --white: #ffffff;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--cream);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Ocean wave background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 120% 60% at 80% 110%, rgba(12,40,80,0.9) 0%, transparent 60%),
+      radial-gradient(ellipse 80% 50% at 10% 90%, rgba(20,60,100,0.5) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 40% at 50% 50%, rgba(10,25,50,0.3) 0%, transparent 70%),
+      linear-gradient(175deg, #07111f 0%, #0d1e35 40%, #071525 100%);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* Animated wave lines */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 80px,
+        rgba(200,168,75,0.03) 80px,
+        rgba(200,168,75,0.03) 81px
+      );
+    z-index: 0;
+    pointer-events: none;
+    animation: drift 20s linear infinite;
+  }
+
+  @keyframes drift {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(81px); }
+  }
+
+  .wrapper {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 48px 80px;
+  }
+
+  /* HEADER */
+  .header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
+    margin-bottom: 56px;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.1s forwards;
+  }
+
+  .brand-block {}
+
+  .brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 700;
+    letter-spacing: 8px;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .brand span {
+    color: var(--gold);
+  }
+
+  .brand-sub {
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--fog);
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+
+  .header-right {
+    text-align: right;
+  }
+
+  .tag {
+    display: inline-block;
+    border: 1px solid rgba(200,168,75,0.4);
+    color: var(--gold);
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    font-weight: 400;
+  }
+
+  .header-date {
+    display: block;
+    font-size: 11px;
+    color: var(--fog);
+    letter-spacing: 2px;
+    margin-top: 8px;
+    text-transform: uppercase;
+  }
+
+  /* GOLD RULE */
+  .gold-line {
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold) 0%, rgba(200,168,75,0.2) 60%, transparent 100%);
+    margin-bottom: 56px;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.2s forwards;
+  }
+
+  /* THESIS STATEMENT */
+  .thesis {
+    margin-bottom: 64px;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.3s forwards;
+  }
+
+  .thesis-eyebrow {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 400;
+    margin-bottom: 20px;
+  }
+
+  .thesis-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 1.45;
+    color: var(--white);
+    max-width: 780px;
+  }
+
+  .thesis-text em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  /* BODY PARAGRAPH */
+  .body-para {
+    font-size: 14.5px;
+    line-height: 1.85;
+    color: var(--fog);
+    max-width: 720px;
+    margin-bottom: 56px;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.4s forwards;
+  }
+
+  .body-para strong {
+    color: var(--cream);
+    font-weight: 400;
+  }
+
+  /* THREE PILLARS */
+  .pillars {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2px;
+    margin-bottom: 64px;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.5s forwards;
+  }
+
+  .pillar {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(200,168,75,0.12);
+    padding: 28px 24px 32px;
+    position: relative;
+    transition: background 0.3s ease, border-color 0.3s ease;
+  }
+
+  .pillar:hover {
+    background: rgba(200,168,75,0.04);
+    border-color: rgba(200,168,75,0.3);
+  }
+
+  .pillar::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 40px; height: 2px;
+    background: var(--gold);
+  }
+
+  .pillar-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 300;
+    color: rgba(200,168,75,0.2);
+    line-height: 1;
+    margin-bottom: 14px;
+  }
+
+  .pillar-title {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 400;
+    margin-bottom: 12px;
+  }
+
+  .pillar-text {
+    font-size: 13px;
+    color: var(--fog);
+    line-height: 1.75;
+  }
+
+  /* ARCHITECTURE STRIP */
+  .arch-strip {
+    margin-bottom: 64px;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.6s forwards;
+  }
+
+  .arch-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 400;
+    margin-bottom: 20px;
+  }
+
+  .arch-flow {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-wrap: wrap;
+  }
+
+  .arch-node {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(200,168,75,0.2);
+    padding: 14px 20px;
+    text-align: center;
+    flex: 1;
+    min-width: 140px;
+  }
+
+  .arch-node-title {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 400;
+    margin-bottom: 6px;
+  }
+
+  .arch-node-desc {
+    font-size: 12px;
+    color: var(--fog);
+    line-height: 1.5;
+  }
+
+  .arch-arrow {
+    color: rgba(200,168,75,0.4);
+    font-size: 18px;
+    padding: 0 8px;
+    flex-shrink: 0;
+  }
+
+  /* QUOTE BLOCK */
+  .quote-block {
+    border-left: 2px solid var(--gold);
+    padding: 24px 32px;
+    margin-bottom: 64px;
+    background: rgba(200,168,75,0.03);
+    opacity: 0;
+    animation: fadeUp 1s ease 0.7s forwards;
+  }
+
+  .quote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--white);
+    line-height: 1.55;
+    margin-bottom: 12px;
+  }
+
+  .quote-attr {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  /* NETWORK STRIP */
+  .network {
+    margin-bottom: 64px;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.75s forwards;
+  }
+
+  .network-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 400;
+    margin-bottom: 20px;
+  }
+
+  .network-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .network-item {
+    border: 1px solid rgba(200,168,75,0.2);
+    padding: 8px 16px;
+    font-size: 12px;
+    color: var(--fog);
+    letter-spacing: 0.5px;
+    transition: border-color 0.3s, color 0.3s;
+  }
+
+  .network-item:hover {
+    border-color: var(--gold);
+    color: var(--cream);
+  }
+
+  /* BOTTOM TWO-COL */
+  .bottom-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 56px;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.85s forwards;
+  }
+
+  .bottom-col-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 400;
+    margin-bottom: 16px;
+  }
+
+  .bottom-col-text {
+    font-size: 13.5px;
+    color: var(--fog);
+    line-height: 1.8;
+  }
+
+  .bottom-col-text strong {
+    color: var(--cream);
+    font-weight: 400;
+  }
+
+  /* FOOTER */
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 24px;
+    border-top: 1px solid rgba(200,168,75,0.15);
+    opacity: 0;
+    animation: fadeUp 1s ease 0.95s forwards;
+  }
+
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 5px;
+    color: var(--gold);
+  }
+
+  .footer-tagline {
+    font-size: 11px;
+    color: var(--fog);
+    letter-spacing: 2px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .footer-tagline span {
+    color: rgba(200,168,75,0.6);
+    margin: 0 8px;
+  }
+
+  .footer-right {
+    font-size: 11px;
+    color: var(--fog);
+    letter-spacing: 1px;
+    text-align: right;
+  }
+
+  /* ANIMATED CORRIDOR LINE */
+  .corridor-accent {
+    position: fixed;
+    right: 0; top: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(180deg,
+      transparent 0%,
+      rgba(200,168,75,0.6) 30%,
+      rgba(200,168,75,0.2) 60%,
+      transparent 100%
+    );
+    animation: pulse 4s ease-in-out infinite;
+    z-index: 2;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .wrapper { padding: 40px 24px 60px; }
+    .brand { font-size: 36px; letter-spacing: 5px; }
+    .thesis-text { font-size: 24px; }
+    .pillars { grid-template-columns: 1fr; }
+    .bottom-grid { grid-template-columns: 1fr; }
+    .header { grid-template-columns: 1fr; gap: 16px; }
+    .arch-flow { flex-direction: column; }
+    .arch-arrow { transform: rotate(90deg); }
+    .footer { flex-direction: column; gap: 16px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="corridor-accent"></div>
+
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="brand-block">
+      <div class="brand">NANO<span>FINS</span></div>
+      <div class="brand-sub">Gulf of Guinea Maritime Risk & Blue Economy Architecture</div>
+    </div>
+    <div class="header-right">
+      <span class="tag">About Us</span>
+      <span class="header-date">May 2026 &nbsp;·&nbsp; Confidential</span>
+    </div>
+  </div>
+
+  <div class="gold-line"></div>
+
+  <!-- THESIS -->
+  <div class="thesis">
+    <div class="thesis-eyebrow">Our Thesis</div>
+    <div class="thesis-text">
+      Maritime trade no longer reacts only to danger itself.<br>
+      It reacts to <em>the anticipation of danger.</em><br>
+      The instrument serving that world must be built at the same speed.
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body-para">
+    Today, a vessel does not need to enter a conflict zone for its voyage economics to unravel. A rerouting instruction, an AIS anomaly near a sensitive corridor, a shift in regional intelligence signals — any of these is now sufficient to trigger underwriting reassessment, charterparty friction, and cargo anxiety simultaneously. <strong>The physical event has become secondary. The anticipation of it arrives first.</strong>
+    <br><br>
+    That gap — between when the market reacts and when insurance responds — is where commercial voyages are haemorrhaging value. And it is the gap that NANOFINS was built to close.
+  </div>
+
+  <!-- THREE PILLARS -->
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pillar-num">01</div>
+      <div class="pillar-title">The Instrument</div>
+      <div class="pillar-text">A next-generation marine insurance instrument calibrated to the signals modern maritime risk actually moves on — corridor-specific, independently verified, and structured to respond at the speed of the market. Fast settlement. No lag between event and compensation.</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">02</div>
+      <div class="pillar-title">The Corridor</div>
+      <div class="pillar-text">Gulf of Guinea via Cape of Good Hope — anchored at Lekki Deep Sea Port, Africa's deepest at 16.5m draft. The primary commercially viable alternative as Hormuz and Red Sea remain compromised.</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">03</div>
+      <div class="pillar-title">The Capital</div>
+      <div class="pillar-text">Sovereign-grade multilateral capital backstop — structured to replace London's reinsurance function on this corridor. Premium retained in Lagos. The margin that has always left Nigeria stays here.</div>
+    </div>
+  </div>
+
+  <!-- ARCHITECTURE STATEMENT -->
+  <div class="arch-strip">
+    <div class="arch-label">Commercial Architecture</div>
+    <div class="body-para" style="margin-bottom:0; animation-delay:0.6s;">
+      The architecture connects <strong>vessel operators</strong> rerouting through the Gulf of Guinea corridor, a <strong>Nigerian anchor insurer</strong> retaining marine premium domestically, and a <strong>multilateral DFI capital facility</strong> providing the sovereign-grade backstop that makes the product commercially executable at scale — into a single, structured risk instrument. When it responds, it responds fast. No assessor. No negotiation. No margin leaving Nigeria.
+    </div>
+  </div>
+
+  <!-- QUOTE -->
+  <div class="quote-block">
+    <div class="quote-text">"We do not compete with the London market on its own terms. We make it irrelevant on ours."</div>
+    <div class="quote-attr">NANOFINS — Commercial Position Statement</div>
+  </div>
+
+  <!-- NETWORK -->
+  <div class="network">
+    <div class="network-label">Current Institutional Engagement</div>
+    <div class="network-items">
+      <div class="network-item">Ocean Finance Specialist — DFI Access Level</div>
+      <div class="network-item">Commonwealth Secretariat Ocean Division</div>
+      <div class="network-item">Anchor Insurer — MD-Level Conversations</div>
+      <div class="network-item">Lekki Deep Sea Port — Infrastructure Anchor</div>
+      <div class="network-item">African Maritime Council</div>
+      <div class="network-item">Blue Economy Capital Network — DFI Access Level</div>
+      <div class="network-item">BEFF Monaco 2026 — Forum Engagement</div>
+    </div>
+  </div>
+
+  <!-- BOTTOM TWO COL -->
+  <div class="bottom-grid">
+    <div>
+      <div class="bottom-col-label">Why Now</div>
+      <div class="bottom-col-text">
+        Three conditions have never before aligned simultaneously: <strong>Lekki Deep Sea Port exists at scale.</strong> The risk data infrastructure required for next-generation insurance instruments is legally defensible. <strong>Hormuz rerouting pressure is live — not projected.</strong> The Arctic alternative is commercially unexecutable. The window is open. It will not remain open indefinitely.
+      </div>
+    </div>
+    <div>
+      <div class="bottom-col-label">About the Founder</div>
+      <div class="bottom-col-text">
+        <strong>Yinka Ayeni</strong> — Maritime Economist &amp; Blue Economy Strategist. Founder of NANOFINS. 17 years operating at the intersection of marine logistics, Blue Finance, and commercial architecture across West Africa. Member, International Association of Maritime Economists (IAME). Featured practitioner contributor to the University of Ibadan Marine Society — recognised for expertise in Gulf of Guinea corridor development and Blue Economy strategy.
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-brand">NANOFINS</div>
+    <div class="footer-tagline">
+      Built for the corridor
+      <span>·</span>
+      Built for the moment
+      <span>·</span>
+      Built for what comes next
+    </div>
+    <div class="footer-right">
+      Yinka Ayeni<br>
+      Founder &amp; Principal Architect
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
